@@ -29,6 +29,51 @@
 
   <body>
     <h1>Library</h1>
+    <form class="form">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="author" class="form-label"
+          >Author</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="author"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="pages" class="form-label">Pages</label>
+        <input
+          type="number"
+          class="form-control"
+          id="pages"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="bookStatus" class="form-label"
+          >Status</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="book-status"
+        />
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        id="submit"
+      >
+        Add Book!
+      </button>
+    </form>
     <table class="table">
       <thead>
         <tr>
@@ -46,4 +91,3 @@
     <script src="js/main.js"></script>
   </body>
 </html>
-

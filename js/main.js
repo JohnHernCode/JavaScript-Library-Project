@@ -1,35 +1,43 @@
 const tableBody = document.querySelector('.table-body');
+const bookTitle = document.querySelector('#title');
+const bookAuthor = document.querySelector('#author');
+const bookPages = document.querySelector('#pages');
+const bookStatus = document.querySelector('#book-status');
+const form = document.querySelector('.form');
 
-let myLibrary = [
-  {
-    id: 1,
-    title: 'Fight Club',
-    author: 'Chuck Palahniuk',
-    pages: 245,
-    bookStatus: 'read',
-  },
-  {
-    id: 2,
-    title: 'Hat Full of Sky',
-    author: 'Terry Pratchet',
-    pages: 354,
-    bookStatus: 'read',
-  },
-];
+form.addEventListener('submit', addBookToLibrary);
 
-function Book(title, author, pages, bookStatus) {
+let myLibrary = [];
+
+function Book(id, title, author, pages, bookStatus) {
+  this.id = id;
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.bookStatus = bookStatus;
-  this.info = function () {
-    return `${title} by ${author}, ${pages}, ${bookStatus}`;
-  };
 }
 
-function addBookToLibrary() {
-  // do stuff here
+function addBookToLibrary(e) {
+  e.preventDefault();
+  let newBook = new Book(
+    3,
+    bookTitle.value,
+    bookAuthor.value,
+    bookPages.value,
+    bookStatus.value
+  );
+
+  myLibrary.push(newBook);
+  localStorage.setItem(
+    'myLibrary',
+    JSON.stringify(myLibrary)
+  );
+  // showBooks(myLibrary);
+  form.reset();
+  console.log(myLibrary);
 }
+
+addBookToLibrary.prototype = Object.create(Book.prototype);
 
 function showBooks(arr) {
   for (let i = 0; i < arr.length; i++) {
@@ -53,4 +61,4 @@ function showBooks(arr) {
   }
 }
 
-showBooks(myLibrary);
+// showBooks(myLibrary);
