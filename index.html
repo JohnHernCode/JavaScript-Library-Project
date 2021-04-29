@@ -29,78 +29,83 @@
   </head>
 
   <body>
-    <h1>Library</h1>
-    <form class="form">
-      <div class="mb-3">
-        <label for="title" class="form-label">Title</label>
-        <input
-          type="text"
-          class="form-control"
-          id="title"
-        />
-      </div>
-      <div class="mb-3">
-        <label for="author" class="form-label"
-          >Author</label
+    <div class="container">
+      <h1 class="text-center">Library</h1>
+      <form class="form">
+        <div class="mb-3">
+          <label for="title" class="form-label"
+            >Title</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="author" class="form-label"
+            >Author</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="author"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="pages" class="form-label"
+            >Pages</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            id="pages"
+          />
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="readIt"
+            id="readIt1"
+            value="yes"
+          />
+          <label class="form-check-label" for="readIt1">
+            Have read it
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="readIt"
+            id="readIt2"
+            value="no"
+          />
+          <label class="form-check-label" for="readIt2">
+            Haven't read it
+          </label>
+        </div>
+        <button
+          type="submit"
+          class="btn btn-success"
+          id="submit"
         >
-        <input
-          type="text"
-          class="form-control"
-          id="author"
-        />
-      </div>
-      <div class="mb-3">
-        <label for="pages" class="form-label">Pages</label>
-        <input
-          type="number"
-          class="form-control"
-          id="pages"
-        />
-      </div>
-      <div class="form-check">
-        <input
-          class="form-check-input"
-          type="radio"
-          name="readIt"
-          id="readIt1"
-          value="yes"
-        />
-        <label class="form-check-label" for="readIt1">
-          Have read it
-        </label>
-      </div>
-      <div class="form-check">
-        <input
-          class="form-check-input"
-          type="radio"
-          name="readIt"
-          id="readIt2"
-          value="no"
-        />
-        <label class="form-check-label" for="readIt2">
-          Haven't read it
-        </label>
-      </div>
-      <button
-        type="submit"
-        class="btn btn-primary"
-        id="submit"
-      >
-        Add Book!
-      </button>
-    </form>
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Title</th>
-          <th scope="col">Author</th>
-          <th scope="col">Pages</th>
-          <th scope="col">Read</th>
-          <th scope="col">Remove</th>
-        </tr>
-      </thead>
-      <tbody class="table-body"></tbody>
-    </table>
+          Add Book!
+        </button>
+      </form>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">Pages</th>
+            <th scope="col">Read</th>
+          </tr>
+        </thead>
+        <tbody class="table-body"></tbody>
+      </table>
+    </div>
 
     <script src="js/main.js"></script>
   </body>

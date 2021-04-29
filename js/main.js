@@ -6,30 +6,30 @@ const bookRead = document.getElementsByName('readIt');
 const form = document.querySelector('.form');
 
 let myLibrary = JSON.parse(localStorage.getItem('library'));
-myLibrary = myLibrary ? myLibrary : [];
+myLibrary = myLibrary || [];
 
-form.addEventListener('submit', addBookToLibrary);
+function saveStorage() {
+  localStorage.setItem(
+    'library',
+    JSON.stringify(myLibrary),
+  );
+}
+
+function changeReadStatus(book) {
+  if (book.read === 'yes') {
+    book.read = 'no';
+  } else if (book.read === 'no') {
+    book.read = 'yes';
+  }
+  saveStorage();
+  window.location.reload(true);
+}
 
 function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.read = read;
-}
-
-function addBookToLibrary(e) {
-  e.preventDefault();
-  let newBook = new Book(
-    bookTitle.value,
-    bookAuthor.value,
-    bookPages.value,
-    radioValue()
-  );
-
-  myLibrary.push(newBook);
-  saveStorage();
-  form.reset();
-  window.location.reload(true);
 }
 
 function radioValue() {
@@ -40,27 +40,42 @@ function radioValue() {
   }
 }
 
-function showBooks(arr) {
-  arr.forEach((book, index) => {
-    tableTemplate(book, index);
-  });
+function addBookToLibrary(e) {
+  e.preventDefault();
+  const newBook = new Book(
+    bookTitle.value,
+    bookAuthor.value,
+    bookPages.value,
+    radioValue(),
+  );
+
+  myLibrary.push(newBook);
+  saveStorage();
+  form.reset();
+  window.location.reload(true);
 }
 
-function saveStorage() {
-  localStorage.setItem(
-    'library',
-    JSON.stringify(myLibrary)
-  );
+form.addEventListener('submit', addBookToLibrary);
+
+function removeBook(index) {
+  myLibrary.splice(index, 1);
+  saveStorage();
+  window.location.reload(true);
 }
 
 function tableTemplate(book, index) {
-  let row = document.createElement('tr');
-  let title = document.createElement('td');
-  let author = document.createElement('td');
-  let pages = document.createElement('td');
-  let read = document.createElement('td');
-  let removeBtn = document.createElement('button');
+  const row = document.createElement('tr');
+  const title = document.createElement('td');
+  const author = document.createElement('td');
+  const pages = document.createElement('td');
+  const read = document.createElement('td');
+  const removeBtn = document.createElement('button');
+  const changeRead = document.createElement('button');
+  changeRead.classList.add('btn');
+  changeRead.classList.add('btn-outline-primary');
+  changeRead.textContent = 'Change read status';
   removeBtn.classList.add('btn');
+  removeBtn.classList.add('btn-outline-danger');
   removeBtn.textContent = 'Remove';
   title.innerHTML = `${book.title}`;
   author.innerHTML = `${book.author}`;
@@ -71,18 +86,22 @@ function tableTemplate(book, index) {
   row.appendChild(pages);
   row.appendChild(read);
   row.appendChild(removeBtn);
+  row.appendChild(changeRead);
   tableBody.appendChild(row);
   removeBtn.addEventListener('click', (e) => {
     e.preventDefault();
     removeBook(index);
   });
+  changeRead.addEventListener('click', (e) => {
+    e.preventDefault();
+    changeReadStatus(book);
+  });
 }
 
-function removeBook(index) {
-  console.log(index);
-  myLibrary.splice(index, 1);
-  saveStorage();
-  window.location.reload(true);
+function showBooks(arr) {
+  arr.forEach((book, index) => {
+    tableTemplate(book, index);
+  });
 }
 
 showBooks(myLibrary);
