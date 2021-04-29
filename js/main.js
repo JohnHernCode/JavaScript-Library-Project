@@ -7,7 +7,10 @@ const form = document.querySelector('.form');
 
 form.addEventListener('submit', addBookToLibrary);
 
-let myLibrary = [];
+
+let myLibrary = JSON.parse(localStorage.getItem('library'));
+
+myLibrary = myLibrary ? myLibrary: [];
 
 function Book(id, title, author, pages, bookStatus) {
   this.id = id;
@@ -29,17 +32,18 @@ function addBookToLibrary(e) {
 
   myLibrary.push(newBook);
   localStorage.setItem(
-    'myLibrary',
+    'library',
     JSON.stringify(myLibrary)
   );
-  // showBooks(myLibrary);
+  showBooks(myLibrary);
   form.reset();
-  console.log(myLibrary);
+  // console.log(myLibrary);
 }
 
 addBookToLibrary.prototype = Object.create(Book.prototype);
 
 function showBooks(arr) {
+  
   for (let i = 0; i < arr.length; i++) {
     let row = document.createElement('tr');
     let id = document.createElement('td');
