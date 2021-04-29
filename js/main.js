@@ -33,11 +33,12 @@ function Book(title, author, pages, read) {
 }
 
 function radioValue() {
-  for (let i = 0; i < bookRead.length; i++) {
+  for (let i = 0; i < bookRead.length; i += 1) {
     if (bookRead[i].checked) {
       return bookRead[i].value;
     }
   }
+  return null;
 }
 
 function addBookToLibrary(e) {
