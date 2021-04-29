@@ -8,7 +8,7 @@
       name="description"
       content="microverse library in JavaScript"
     />
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="favicon.ico" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1"
@@ -57,15 +57,29 @@
           id="pages"
         />
       </div>
-      <div class="mb-3">
-        <label for="bookStatus" class="form-label"
-          >Status</label
-        >
+      <div class="form-check">
         <input
-          type="text"
-          class="form-control"
-          id="book-status"
+          class="form-check-input"
+          type="radio"
+          name="readIt"
+          id="readIt1"
+          value="yes"
         />
+        <label class="form-check-label" for="readIt1">
+          Have read it
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="readIt"
+          id="readIt2"
+          value="no"
+        />
+        <label class="form-check-label" for="readIt2">
+          Haven't read it
+        </label>
       </div>
       <button
         type="submit"
@@ -78,7 +92,6 @@
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">id</th>
           <th scope="col">Title</th>
           <th scope="col">Author</th>
           <th scope="col">Pages</th>
