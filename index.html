@@ -29,9 +29,14 @@
   </head>
 
   <body>
-    <div class="container">
-      <h1 class="text-center">Library</h1>
-      <form class="form">
+   <header><h1 class="text-center">Library</h1></header>	
+   <div class="container">
+  <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-form" aria-expanded="false" aria-controls="collapse-form">
+    Add Book
+  </button>
+</div>
+<div class="container collapse" id="collapse-form">
+  <form class="form">
         <div class="mb-3">
           <label for="title" class="form-label"
             >Title</label
@@ -95,6 +100,8 @@
           Add Book!
         </button>
       </form>
+</div>
+    <div class="container">
       <table class="table">
         <thead>
           <tr>
