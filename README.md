@@ -20,6 +20,10 @@ It is an HTML/CSS/js page where users can add and view a book library.
 
 ![screenshot](/capture.png)
 
+## Live Demo
+
+[Demo](https://johnherncode.github.io/project-library/)
+
 ### Built With
 
 This project was built using these technologies.
