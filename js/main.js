@@ -25,16 +25,28 @@ function changeReadStatus(book) {
   window.location.reload();
 }
 
-// function Book(title, author, pages, read) {
+// class with constructor
+class Book {
+  constructor (title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
+}
+
+// original constructor
+// function Book (title, author, pages, read) {
 //   this.title = title;
 //   this.author = author;
 //   this.pages = pages;
 //   this.read = read;
 // }
 
-const Book = (title, author, pages, read) => {
-  return { title, author, pages, read };
-}
+// original factory function (does not use new when creating object)
+// const Book = (title, author, pages, read) => {
+//   return { title, author, pages, read };
+// }
 
 function radioValue() {
   for (let i = 0; i < bookRead.length; i += 1) {
@@ -47,7 +59,7 @@ function radioValue() {
 
 function addBookToLibrary(e) {
   e.preventDefault();
-  const newBook = Book(
+  const newBook = new Book(
     bookTitle.value,
     bookAuthor.value,
     bookPages.value,
