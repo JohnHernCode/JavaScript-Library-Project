@@ -22,14 +22,18 @@ function changeReadStatus(book) {
     book.read = 'yes';
   }
   saveStorage();
-  window.location.reload(true);
+  window.location.reload();
 }
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+// function Book(title, author, pages, read) {
+//   this.title = title;
+//   this.author = author;
+//   this.pages = pages;
+//   this.read = read;
+// }
+
+const Book = (title, author, pages, read) => {
+  return { title, author, pages, read };
 }
 
 function radioValue() {
@@ -43,7 +47,7 @@ function radioValue() {
 
 function addBookToLibrary(e) {
   e.preventDefault();
-  const newBook = new Book(
+  const newBook = Book(
     bookTitle.value,
     bookAuthor.value,
     bookPages.value,
@@ -53,7 +57,7 @@ function addBookToLibrary(e) {
   myLibrary.push(newBook);
   saveStorage();
   form.reset();
-  window.location.reload(true);
+  window.location.reload();
 }
 
 form.addEventListener('submit', addBookToLibrary);
@@ -61,7 +65,7 @@ form.addEventListener('submit', addBookToLibrary);
 function removeBook(index) {
   myLibrary.splice(index, 1);
   saveStorage();
-  window.location.reload(true);
+  window.location.reload();
 }
 
 function tableTemplate(book, index) {
